@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create meme</title>
+    <link rel="stylesheet" href="../stylesheet/creatememe.css">
+</head>
+<body>
+    <header>
+    <div id="image"><div id="himg"> </div> &nbsp;<span style=" color: blue;" id="namefe"></span></div>
+    <nav>
+      <span id="user-email"></span>
+      <button id="dashboard">Dashboard</button>
+      
+    </nav>
+  </header>
+    <section id="meme-creator">
+      <h2>Create a Meme</h2>
+
+      <div class="input-group">
+        <label for="memeImage">Upload Image:</label>
+        <input type="file" id="memeImage" accept="image/*" />
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="topText" placeholder="Top Text" />
+      </div>
+
+      <div class="input-group">
+        
+        <input type="text" id="bottomText" placeholder="Bottom Text" />
+      </div>
+
+      <div class="button-group">
+        <button onclick="suggestCaptions()">✨ AI Suggest Caption</button>
+        <button id="generateMeme">🛠 Generate Meme</button>
+      </div>
+
+      <div class="canvas-wrapper">
+        <canvas id="memeCanvas" width="500" height="500"></canvas>
+      </div>
+
+      <div class="button-group">
+        <button id="publishMeme">🚀 Publish Meme</button>
+      </div>
+    </section>
+
+</body>
+    <script src="./cretememe.js" type="module"></script>
+</html>

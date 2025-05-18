@@ -1,0 +1,125 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+  background-color: #f4f4f4;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header.dark {
+  background-color: #1a1a1a;
+}
+
+#image {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#himg {
+  background-image: url("https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg");
+  height: 50px;
+  width: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+section div{
+    
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+    justify-content: center;
+}
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+ button {
+  animation: slideIn 0.5s ease-in-out;
+  transition: transform 0.3s ease;
+  margin-left: 10px;
+  padding: 6px 12px;
+  border: 1px solid rgb(7, 7, 7);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #777;
+  color: rgb(255, 252, 252);
+}
+body.dark button{
+  color: white;
+  background-color: #353333;
+  border: 1px solid white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+}
+body.dark button:hover{
+  background-color: rgb(255, 252, 252);
+  color: #080808;
+}
+button:hover{
+  background-color: #3b3b3b;
+  transform: translateY(-2px);
+}
+
+#user-email {
+  margin-right: 10px;
+}
+
+#meme-creator {
+  padding: 20px;
+  text-align: center;
+}
+
+#meme-creator input {
+  margin: 10px 0;
+  padding: 8px;
+  width: 60%;
+  max-width: 400px;
+}
+
+#meme-creator button {
+  padding: 8px 16px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+#memeCanvas {
+  display: block;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  max-width: 100%;
+}
+
+/* Dark mode */
+body.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark header {
+  background-color: #1e1e1e;
+}
+
+body.dark input,
+body.dark button {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  border: 1px solid #444;
+}
