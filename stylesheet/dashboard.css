@@ -175,7 +175,7 @@ body.dark .meme-card {
 
 
 /* Responsive Text */
-@media (max-width: 600px) {
+@media (width < 600px) {
   
   #image{
     display: flex;
@@ -196,30 +196,31 @@ body.dark .meme-card {
   }
   nav{
     display: flex;
-  
     align-items: center;
     justify-content: center;
   }
 
   nav button {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
+    padding: 0.3rem;
     
   }
 
   .info p {
     font-size: 0.9rem;
   }
-  .actions button {
-    /* width: 10%; */
-    min-width: 20px;
-    font-size: 0.5rem;
-    /* padding: 0.75rem 1rem; */
-  }
+ #like,#dislike,#comment{
+  font-size: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  margin: 0%;
+ }
+  
 }
 
 
 /* like dislike and comment */
 .actions {
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -240,7 +241,7 @@ body.dark .meme-card {
   color: white;
   background-color: #1e1e1e;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  min-width: 100px;
+  
 }
 
 .actions button:hover ,nav button:hover{
@@ -302,7 +303,7 @@ body.dark .actions button:hover {
 
 #comments-panel {
   position: fixed;      /* FIXED to viewport */
-  top: 20px;            /* 20px from top */
+  top: 120px;            /* 20px from top */
   right: 20px;          /* 20px from right */
   width: 400px;
   max-height: 300px;    /* height limit */

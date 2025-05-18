@@ -99,6 +99,7 @@ window.addEventListener("DOMContentLoaded",async()=>{
                 // Like Button
                 const likeBtn = document.createElement('button');
                 likeBtn.className = 'like-btn';
+                likeBtn.id="like"
                 likeBtn.textContent = '👍 Like';
                 likeBtn.addEventListener('click', async () => {
                   const rawmail = localStorage.getItem("email");
@@ -143,6 +144,7 @@ window.addEventListener("DOMContentLoaded",async()=>{
                 // Dislike Button
                 const dislikeBtn = document.createElement('button');
                 dislikeBtn.className = 'dislike-btn';
+                dislikeBtn.id="dislike"
                 dislikeBtn.textContent = '👎 Dislike';
                 dislikeBtn.addEventListener('click', async () => {
                   const rawmail = localStorage.getItem("email");
@@ -184,6 +186,7 @@ window.addEventListener("DOMContentLoaded",async()=>{
 
                 // Comment Button
                 const commentBtn = document.createElement('button');
+                commentBtn.id="comment"
                 commentBtn.className = 'comment-btn';
                 commentBtn.textContent = '💬see Comment';
                 
@@ -213,9 +216,12 @@ window.addEventListener("DOMContentLoaded",async()=>{
         commentBlock.innerHTML = `<strong>${email}</strong><p>${commentText}</p>`;
         commentsDiv.appendChild(commentBlock);
       });
-    }
 
+    
+    }
     panel.appendChild(commentsDiv);
+    
+
   } catch (err) {
     panel.innerHTML += `<p class="error-comment">Error loading comments.</p>`;
     console.error(err);

@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded",()=>{
     let dashboard=document.getElementById("dashboard")
     let generateMeme=document.getElementById("generateMeme")
     let publishMeme=document.getElementById("publishMeme")
-    
+    let suggestCaptions=document.getElementById("suggestCaptions")
 
     if (localStorage.getItem("darkMode") === "true") {
         document.body.classList.add("dark");
@@ -29,12 +29,58 @@ window.addEventListener("DOMContentLoaded",()=>{
       reader.readAsDataURL(e.target.files[0]);
     });
 
+
+suggestCaptions.addEventListener("click", async () => {
+  const fileInput = document.getElementById("memeImage");
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert("Please upload a meme image before requesting AI suggestions.");
+    return;
+  }
+
+  const fileName = file.name;
+  const prompt = `Suggest ONE short and funny meme caption for an image named "${fileName}". Keep it meme-style, witty, and under 15 words. Reply ONLY with the caption.`;
+
+  try {
+    const response = await fetch(
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyBX5NkDDtv9kQzLt8HhzWV4EACDnuVwQHI",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [{ text: prompt }],
+            },
+          ],
+        }),
+      }
+    );
+
+    const res = await response.json();
+
+    const suggestion =
+      res?.candidates?.[0]?.content?.parts?.[0]?.text?.split("\n")[0] ||
+      "No suggestion available";
+
+    document.getElementById("topText").value = suggestion;
+  } catch (err) {
+    alert("AI suggestion failed: " + err.message);
+    console.error("Gemini API Error:", err);
+  }
+});
+
+
+
     generateMeme.addEventListener("click",()=>{
         ctx.drawImage(image, 0, 0, memeCanvas.width, memeCanvas.height);
-        ctx.font = "30px Impact";
+        ctx.font = "16px Impact";
         ctx.fillStyle = "white";
         ctx.strokeStyle = "black";
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 1;
         let topText = document.getElementById("topText").value;
         let bottomText = document.getElementById("bottomText").value;
         ctx.textAlign = "center";
