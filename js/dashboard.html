@@ -7,15 +7,38 @@
   <link rel="stylesheet" href="../stylesheet/dashboard.css" />
 </head>
 <body>
+  
+  <div id="profile">
+        <button id="close" style="font-size: 1.2rem;">X</button>
+        <div style="padding-top: 50px; width: 100%;">
+            <div id="mainprofile" ></div>
+            <b><p id="name"></p></b>
+            <button id="mymemes" >my memes</button>
+            <button id="editbtn" style="margin-top: 20px;">Edit Profile</button>
+            <button id="logout" >Logout</button>
+            <button id="toggleDarkMode">🌙 Dark Mode</button>
+            <div class="edit-profile" id="edit">
+        <button id="editclose">close</button>
+        <h2>Edit Profile</h2>
+          <label for="profilePic">Profile Picture:</label><br>
+          <input type="file" id="profilePic" name="profilePic" accept="image/*" /><br>
+      
+          <label for="displayName">Name:</label><br>
+          <input type="text" id="displayName" name="displayName" placeholder="Your name" required />
+      
+          <button id="editprofile">Save</button>
+      </div>
+        </div>
+    </div>
 <div id="comments-panel" style="display:none;"></div>
 
   <header>
     <div id="image"><div id="himg"> </div> &nbsp;<span  id="namefe"></span></div>
     <nav>
       <span id="user-email"></span>
+      <button id="All">All</button>
       <button id="creatememe">Create Meme</button>
-      <button id="logout">Logout</button>
-      <button id="toggleDarkMode">🌙</button>
+      
     </nav>
   </header>
 

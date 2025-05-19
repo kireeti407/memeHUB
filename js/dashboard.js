@@ -4,7 +4,9 @@ window.addEventListener("DOMContentLoaded",async()=>{
         let memesData=[]
         let logout=document.getElementById("logout")
         let creatememe=document.getElementById("creatememe")
-
+        let image=document.getElementById("himg")
+        let close=document.getElementById("close")
+        let All=document.getElementById("All")
         let toggle=document.getElementById("toggleDarkMode")
 
         if (localStorage.getItem('darkMode') === 'true') {
@@ -20,6 +22,28 @@ window.addEventListener("DOMContentLoaded",async()=>{
           localStorage.setItem('darkMode', isDark);
           toggle.textContent = isDark ? '☀️' : '🌙';
         });
+        image.addEventListener("click",()=>{
+          profile.style.display="flex"
+        })
+        close.addEventListener("click",()=>{
+          profile.style.display="none"
+        })
+      let mymeme=document.getElementById("mymemes")
+      mymeme.addEventListener("click",()=>{
+        let profile=document.getElementById("profile")
+        let meme=memesData.filter((e)=>e.email==localStorage.getItem("email"))
+        if(meme.length<=0)alert("OOPS you didn't post any email")
+        else{
+          display(meme)
+          All.style.display="inline"
+      }
+      profile.style.display="none"
+      })
+      All.addEventListener("click",()=>{
+        display(memesData)
+        All.style.display="none"
+      })
+
         creatememe.addEventListener("click",()=>{
             window.location.href="./creatememe.html"
         })
@@ -32,8 +56,7 @@ window.addEventListener("DOMContentLoaded",async()=>{
                 memesData=Object.entries(data).map(([id,e])=>{
                     return {id,...e}
                 })
-                console.log(memesData)
-                display()
+                display(memesData)
             }
             catch(err){
                 alert("somthing went wrong")
@@ -44,9 +67,10 @@ window.addEventListener("DOMContentLoaded",async()=>{
             return email.replace(/\./g, '_').replace(/@/g, '_at_');
         }
 
-            function display(){
+            function display(memeData){
               let memediv=document.getElementById("memediv")
-              memesData.forEach((meme)=>{
+              memediv.innerHTML=''
+              memeData.forEach((meme)=>{
                 const canvas = document.createElement('canvas');
                 canvas.width = 500;
                 canvas.height = 500;
@@ -91,10 +115,12 @@ window.addEventListener("DOMContentLoaded",async()=>{
                   <p><strong>Date:</strong> ${meme.date}</p>
                   </div>
                 `;
-
+                const commentBtn = document.createElement('button');
+                  card.appendChild(commentBtn)
                 // Actions Section
                 const actionsDiv = document.createElement('div');
                 actionsDiv.className = 'actions';
+
                             
                 // Like Button
                 const likeBtn = document.createElement('button');
@@ -185,7 +211,9 @@ window.addEventListener("DOMContentLoaded",async()=>{
                 });
 
                 // Comment Button
-                const commentBtn = document.createElement('button');
+
+                
+                
                 commentBtn.id="comment"
                 commentBtn.className = 'comment-btn';
                 commentBtn.textContent = '💬see Comment';
@@ -235,7 +263,6 @@ window.addEventListener("DOMContentLoaded",async()=>{
                 if(meme.email!=localStorage.getItem("email")){
                   actionsDiv.appendChild(likeBtn);
                   actionsDiv.appendChild(dislikeBtn);
-                  actionsDiv.appendChild(commentBtn);
                   card.appendChild(actionsDiv);
 
                   // ========== COMMENT FUNCTIONALITY START ==========
@@ -304,9 +331,10 @@ window.addEventListener("DOMContentLoaded",async()=>{
                   card.appendChild(commentSection);
                   // ========== COMMENT FUNCTIONALITY END ==========
                 }
+                
                 memediv.appendChild(card);
                 }
-              })
+            })
 
 }
 
@@ -324,7 +352,12 @@ window.addEventListener("DOMContentLoaded",async()=>{
              localStorage.setItem("name",mail.name)
              namefe.innerText+=" "+mail.name
              let himg=document.getElementById("himg")
+             let mainprofile=document.getElementById("mainprofile")
+             let nam=document.getElementById("name")
              himg.style.backgroundImage=`url("${mail.img}")`
+            mainprofile.style.backgroundImage=`url("${mail.img}")`
+            nam.innerText=mail.name
+
              fetchdata()
         }
         else{
@@ -339,5 +372,15 @@ window.addEventListener("DOMContentLoaded",async()=>{
             await signOut(auth)
             window.location.href='../index.html'
         })
+
+
+      editbtn.addEventListener("click",()=>{
+        edit.style.display="block"
+      })
+      editclose.addEventListener("click",()=>{
+        edit.style.display="none"
+      })
+  
+  
     
 })
