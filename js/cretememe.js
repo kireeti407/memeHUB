@@ -113,7 +113,6 @@ suggestCaptions.addEventListener("click", async () => {
                    bottomtext,
                    email:localStorage.getItem("email"),
                    name:localStorage.getItem("name"),
-                   comments:{comment:0},
                    like:{like:0},
                    dislike:{dislike:0},
                    date:now.toLocaleDateString()
